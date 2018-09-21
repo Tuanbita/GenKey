@@ -14,6 +14,7 @@ import (
 	"io/ioutil"
 	"strconv"
 )
+
 type key struct {
 	id hexutil.Bytes
 	Priv  hexutil.Bytes
