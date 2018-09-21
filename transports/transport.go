@@ -4,8 +4,8 @@ import (
 	bs "../thrift/gen-go/openstars/core/bigset/generic"
 	id "../thrift/gen-go/openstars/core/idgen"
 	"../thriftpool"
+	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"github.com/astaxie/beego/logs"
 )
 
 var (
@@ -21,7 +21,7 @@ var (
 )
 
 func init(){
-	logs.Info("init thrift TUserStoreService client ");
+	fmt.Println("init thrift TUserStoreService client ");
 }
 
 //GetTUserStoreServiceBinaryClient client by host:port

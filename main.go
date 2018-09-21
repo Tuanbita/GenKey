@@ -4,12 +4,11 @@ import (
 	bs "./thrift/gen-go/openstars/core/bigset/generic"
 	"./transports"
 	"context"
+	"crypto/ecdsa"
 	"encoding/hex"
 	"encoding/json"
-	"github.com/astaxie/beego/logs"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"crypto/ecdsa"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 	"io/ioutil"
 	"strconv"
@@ -61,8 +60,8 @@ func main() {
 		//time.Sleep(time.Second*2)
 		if priv != nil && priv.Item != nil{
 			fmt.Println(i)
-			logs.Info("priv: ",string(priv.GetItem().GetValue()))
-			logs.Info("pub: ",hex.EncodeToString(pub.GetItem().GetValue()))
+			fmt.Println("priv: ",string(priv.GetItem().GetValue()))
+			fmt.Println("pub: ",hex.EncodeToString(pub.GetItem().GetValue()))
 
 			a := key{
 					[]byte(strconv.Itoa(i)),
