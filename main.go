@@ -1,14 +1,14 @@
 package main
 
 import (
-	bs "GrpcChatServer/ThriftCommon/thrift/gen-go/openstars/core/bigset/generic"
-	"GrpcChatServer/ThriftCommon/thrift/transports"
+	bs "./thrift/gen-go/openstars/core/bigset/generic"
+	"./transports"
 	"context"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-
-	//"github.com/ethereum/go-ethereum/crypto"
-	"crypto/ecdsa"
+	"encoding/hex"
 	"encoding/json"
+	"github.com/astaxie/beego/logs"
+	"github.com/ethereum/go-ethereum/common/hexutil"
+	"crypto/ecdsa"
 	"fmt"
 	"github.com/ethereum/go-ethereum/crypto"
 	"io/ioutil"
@@ -49,8 +49,6 @@ func main() {
 		client.Client.(*bs.TStringBigSetKVServiceClient).BsPutItem(context.Background(),"PublicKey", &bs.TItem{[]byte(key), pubKey_byt})
 	}
 
-	//
-	//
 	var Keys [21]key
 	//neu nhu co thi return false
 	for i := 1; i<=20; i++{
@@ -62,8 +60,8 @@ func main() {
 		//time.Sleep(time.Second*2)
 		if priv != nil && priv.Item != nil{
 			fmt.Println(i)
-			fmt.Println(string(priv.GetItem().GetValue()))
-			fmt.Println(string(pub.GetItem().GetValue()))
+			logs.Info("priv: ",string(priv.GetItem().GetValue()))
+			logs.Info("pub: ",hex.EncodeToString(pub.GetItem().GetValue()))
 
 			a := key{
 					[]byte(strconv.Itoa(i)),
